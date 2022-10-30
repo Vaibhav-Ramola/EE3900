@@ -85,7 +85,7 @@ columns=fullflexible
 %\newtheorem{algorithm}{Algorithm}[section]
 %\newtheorem{cor}{Corollary}
 \newcommand{\BEQA}{\begin{eqnarray}}
-\newcommand{\EEQA}{\end{eqnarray}}
+	\newcommand{\EEQA}{\end{eqnarray}}
 \newcommand{\define}{\stackrel{\triangle}{=}}
 \newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
 \newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
@@ -120,41 +120,39 @@ columns=fullflexible
 
 %\providecommand{\hilbert}{\overset{\mathcal{H}}{ \rightleftharpoons}}
 \providecommand{\system}{\overset{\mathcal{H}}{ \longleftrightarrow}}
-	%\newcommand{\solution}[2]{\textbf{Solution:}{#1}}
+%\newcommand{\solution}[2]{\textbf{Solution:}{#1}}
 \newcommand{\solution}{\noindent \textbf{Solution: }}
 \providecommand{\dec}[2]{\ensuremath{\overset{#1}{\underset{#2}{\gtrless}}}}
 \numberwithin{equation}{section}
 %\numberwithin{equation}{subsection}
 %\numberwithin{problem}{subsection}
 %\numberwithin{definition}{subsection}
-\makeatletter
-\@addtoreset{figure}{problem}
-\makeatother
 
-\let\StandardTheFigure\thefigure
 %\renewcommand{\thefigure}{\theproblem.\arabic{figure}}
-\renewcommand{\thefigure}{\theproblem}
-
+\renewcommand{\thefigure}{\arabic{section}.\arabic{figure}}
+\makeatletter
+\@addtoreset{figure}{section}
+\makeatother
 
 %\numberwithin{figure}{subsection}
 
 \def\putbox#1#2#3{\makebox[0in][l]{\makebox[#1][l]{}\raisebox{\baselineskip}[0in][0in]{\raisebox{#2}[0in][0in]{#3}}}}
-     \def\rightbox#1{\makebox[0in][r]{#1}}
-     \def\centbox#1{\makebox[0in]{#1}}
-     \def\topbox#1{\raisebox{-\baselineskip}[0in][0in]{#1}}
-     \def\midbox#1{\raisebox{-0.5\baselineskip}[0in][0in]{#1}}
+\def\rightbox#1{\makebox[0in][r]{#1}}
+\def\centbox#1{\makebox[0in]{#1}}
+\def\topbox#1{\raisebox{-\baselineskip}[0in][0in]{#1}}
+\def\midbox#1{\raisebox{-0.5\baselineskip}[0in][0in]{#1}}
 
 \vspace{3cm}
 
 \title{ 
-%\logo{
-%}
-Pingala Series
-%	\logo{Octave for Math Computing }
+	%\logo{
+		%}
+	Pingala Series
+	%	\logo{Octave for Math Computing }
 }
 %\title{
-%	\logo{Matrix Analysis through Octave}{\begin{center}\includegraphics[scale=.24]{tlc}\end{center}}{}{HAMDSP}
-%}
+	%	\logo{Matrix Analysis through Octave}{\begin{center}\includegraphics[scale=.24]{tlc}\end{center}}{}{HAMDSP}
+	%}
 
 
 % paper title
@@ -171,14 +169,7 @@ Pingala Series
 % was not built to handle multiple paragraphs
 %
 
-\author{ G V V Sharma$^{*}$ %<-this  stops a space
-\thanks{*The author is with the Department
-of Electrical Engineering, Indian Institute of Technology, Hyderabad
-502285 India e-mail:  gadepall@iith.ac.in.  All content in the manuscript is 
-released under GNU GPL.  Free to use for anything. }% <-this % stops a space
-%\thanks{J. Doe and J. Doe are with Anonymous University.}% <-this % stops a space
-%\thanks{Manuscript received April 19, 2005; revised January 11, 2007.}}
-}
+\author{Vaibhav Ramola}
 % note the % following the last \IEEEmembership and also \thanks - 
 % these prevent an unwanted space from occurring between the last author name
 % and the end of the author line. i.e., if you had this:
@@ -228,27 +219,19 @@ released under GNU GPL.  Free to use for anything. }% <-this % stops a space
 
 \tableofcontents
 
-%\renewcommand{\thefigure}{\thesection.\theenumi}
-%\renewcommand{\thetable}{\thesection.\theenumi}
-
-\renewcommand{\thefigure}{\theenumi}
-\renewcommand{\thetable}{\theenumi}
-
-%\renewcommand{\theequation}{\thesection}
-
-
 \bigskip
 
 \begin{abstract}
 This manual provides a simple introduction to Transforms
 \end{abstract}
 \section{JEE 2019}
-Let 
+\noindent Let $\alpha$ and $\beta$ ($\alpha > \beta$) be the roots of the
+equation $z^2 - z - 1 = 0$. Define,
 \begin{align}
-	a_n &= \frac{\alpha^{n}-\beta^{n}}{\alpha - \beta}, \quad n \ge 1
-	\\
-	b_n &= a_{n-1} + a_{n+1}, \quad n \ge 2, \quad b_1 =1
-	\label{eq:10-orig-diff}
+a_n &= \frac{\alpha^{n}-\beta^{n}}{\alpha - \beta}, \quad n \ge 1
+\\
+b_n &= a_{n-1} + a_{n+1}, \quad n \ge 2, \quad b_1 =1
+\label{eq:10-orig-diff}
 \end{align}
 Verify the following using a python code.
 \begin{enumerate}[label=\thesection.\arabic*
@@ -257,84 +240,229 @@ Verify the following using a python code.
 \begin{align}
 	\sum_{k=1}^{n}a_k = a_{n+2}-1, \quad n \ge 1
 \end{align}
- \item 
+\item 
 \begin{align}
 	\sum_{k=1}^{\infty}\frac{a_k}{10^k} =\frac{10}{89}
 \end{align}
- \item 
+\item 
 \begin{align}
 	b_n =\alpha^n + \beta^n, \quad n \ge 1
 \end{align}
- \item 
+\item 
 \begin{align}
 	\sum_{k=1}^{\infty}\frac{b_k}{10^k} =\frac{8}{89}
 \end{align}
-
 \end{enumerate}
+Download the Python code using
+\begin{lstlisting}
+wget 
+\end{lstlisting}
+
 \section{Pingala Series}
 \begin{enumerate}[label=\thesection.\arabic*,ref=\thesection.\theenumi]
 \item The {\em one sided} $Z$-transform of $x(n)$ is defined as 
-%\cite{proakis_dsp}
 \begin{align}
 	X^{+}(z) = \sum_{n = 0}^{\infty}x(n)z^{-n}, \quad z \in \mathbb{C}
-\label{eq:one-Z}
+	\label{eq:one-Z}
 \end{align}
-	\item The {\em Pingala} series is generated using the difference equation 
+\item The {\em Pingala} series is generated using the difference equation 
 \begin{align}
 	x(n+2) = x\brak{n+1} + x\brak{n},  \quad x(0) = x(1) = 1, n \ge 0
 	\label{eq:10-pingala}
 \end{align}
 Generate a stem plot for $x(n)$.
-\item 		Find $X^{+}(z)$.
-	\item Find $x(n)$.
 
-	\item Sketch 
+\solution
+Download the Python code using
+\begin{lstlisting}
+wget 
+\end{lstlisting}
+
+\begin{figure}[!htp]
+	\includegraphics[width=\columnwidth]{./figs/2_1}
+	\caption{Plot of $x(n)$}
+	\label{fig:xn}
+\end{figure}
+
+\newpage
+\item Find $X^{+}(z)$.
+
+\solution Taking the one-sided $Z$-transform on both sides of \eqref{eq:10-pingala},
 \begin{align}
-	y(n)	 = x\brak{n-1} + x\brak{n+1},  \quad n \ge 0
+	&\mathcal{Z}^+\sbrak{x(n + 2)} = \mathcal{Z}^+\sbrak{x(n + 1)} + \mathcal{Z}^+\sbrak{x(n)} \\
+	&z^2X^+(z) - z^2x(0) - zx(1) = zX^+(z) - zx(0) + zX^+(z) \\
+	&\brak{z^2 - z - 1}X^+(z) = z^2 \\
+	&X^+(z) = \frac{1}{1 - z^{-1} - z^{-2}} \\
+	&= \frac{1}{\brak{1 - \alpha z^{-1}}\brak{1 - \beta z^{-1}}}, \quad |z| > \alpha
+	\label{eq:X-z}
+\end{align}
+\item Find $x(n)$.
+
+\solution Expanding $X^+(z)$ in \eqref{eq:X-z} using partial fractions, we get
+\begin{align}
+	X^+(z) &= \frac{1}{\brak{\alpha - \beta}z^{-1}}\sbrak{\frac{1}{1 - \alpha z^{-1}} - \frac{1}{1 - \beta z^{-1}}} \\
+	&= \frac{1}{\brak{\alpha - \beta}}\sum_{n = 0}^{\infty}\brak{\alpha^n - \beta^n}z^{-n + 1} \\
+	&= \sum_{n = 1}^{\infty}\frac{\alpha^{n} - \beta^{n}}{\alpha - \beta}z^{-n + 1} \\
+	&= \sum_{k = 0}^{\infty}\frac{\alpha^{k + 1} - \beta^{k + 1}}{\alpha - \beta}z^{-k}
+\end{align}
+where $k := n + 1$. Thus,
+\begin{align}
+	x(n) = \frac{\alpha^{n + 1} - \beta^{n + 1}}{\alpha - \beta}u(n) = a_{n + 1}u(n)
+	\label{eq:x-n-def}
+\end{align}
+\item Sketch 
+\begin{align}
+	y(n) = x\brak{n-1} + x\brak{n+1},  \quad n \ge 0
 	\label{eq:10-orig-diff-rev}
 \end{align}
 
-	\item Find $Y^{+}(z)$. 
+\solution Download the Python code using
+\begin{lstlisting}
+wget 
+\end{lstlisting}
+
+\begin{figure}
+	\includegraphics[width=\columnwidth]{./figs/2_2}
+	\caption{Plot of $y(n)$}
+	\label{fig:yn}
+\end{figure}
+\newpage
+
+\item Find $Y^{+}(z)$. 
+
+\solution Taking the one-sided $Z$-transform on both sides of \eqref{eq:10-orig-diff-rev},
+\begin{align}
+	&\mathcal{Z}^+\sbrak{y(n)} = \mathcal{Z}^+\sbrak{x(n + 1)} + \mathcal{Z}^+\sbrak{x(n - 1)} \\
+	&Y^+(z) = zX^+(z) - zx(0) + z^{-1}X^+(z) + zx(-1) \\
+	&= \frac{z + z^{-1}}{1 - z^{-1} - z^{-2}} - z \\
+	&= \frac{1 + 2z^{-1}}{1 - z^{-1} - z^{-2}}, \quad |z| > \alpha
+\end{align}
+since $x(n) = 0\ \forall\ n < 0$.
 \item Find $y(n)$.
+\label{pr:1-3}
+
+\solution Using \eqref{eq:X-z},
+\begin{align}
+	Y^+(z) &= (1 + 2z^{-1})\sum_{n = 0}^{\infty}x(n)z^{-n} \\
+	&= \sum_{n = 0}^{\infty}x(n)z^{-n} + \sum_{n = 1}^{\infty}2x(n - 1)z^{-n} \\
+	&= x(0) + \sum_{n = 1}^{\infty}\brak{x(n) + 2x(n - 1)}z^{-n}
+\end{align}
+Thus, $y(0) = x(0) = 1$ and for $n \ge 1$, using the fact that $\alpha$ and 
+$\beta$ are the roots of the equation $z^2 - z - 1 = 0$,
+\begin{align}
+	y(n) &= \frac{\brak{\alpha^{n + 1} - \beta^{n + 1}} + \brak{2\alpha^n + 2\beta^n}}{\alpha - \beta} \\
+	&= \frac{\brak{\alpha^{n + 2} - \beta^{n + 2}} + \brak{\alpha^{n} + \beta^{n}}}{\alpha - \beta} \label{eq:y-b} \\
+	&= \frac{\brak{\alpha^{n + 2} - \beta^{n + 2}} - \alpha\beta\brak{\alpha^{n} + \beta^{n}}}{\alpha - \beta} \\
+	&= \frac{\brak{\alpha - \beta}\brak{\alpha^{n + 1} + \beta^{n + 1}}}{\alpha - \beta} \\
+	&= \alpha^{n + 1} + \beta^{n + 1}
+\end{align}
+Thus, $y(n) = \alpha^{n + 1} + \beta^{n + 1}$ for $n \geq 0$ as $\alpha + \beta = 1$.
+Comparing \eqref{eq:y-b} with the definition of $b_n$, we see that $y(n) = b_{n + 1}$.
+Hence, $b_n = \alpha^n + \beta^n$.
 \end{enumerate}
 \section{Power of the Z transform}
 \begin{enumerate}[label=\thesection.\arabic*,ref=\thesection.\theenumi]
 \item Show that 
 \begin{align}
 	\sum_{k=1}^{n}a_k = 
-	\sum_{k=0}^{n-1}x(n) = x(n)*u(n-1)
+	\sum_{k=0}^{n-1}x(k) = x(n)*u(n-1)
+\end{align}
+
+\solution From \eqref{eq:x-n-def}, and noting that $x(n) = 0\ \forall\ n < 0$,
+\begin{align}
+	\sum_{k=1}^{n}a_k &= \sum_{k=0}^{n-1}x(k) \\
+	&= \sum_{k = -\infty}^{n - 1}x(k) \\
+	&= \sum_{k = -\infty}^{\infty}x(k)u(n - 1 - k) \\
+	&= x(n)*u(n - 1)
 \end{align}
 \item Show that 
 \begin{align}
-a_{n+2}-1, \quad n \ge 1
+	a_{n+2}-1, \quad n \ge 1
 \end{align}
 can be expressed as 
 \begin{align}
 	\sbrak{x\brak{n+1}-1}u\brak{n}
 \end{align}
- \item Show that 
+
+\solution From \eqref{eq:x-n-def},
+\begin{align}
+	a_{n+2} - 1 = \sbrak{x(n + 1) - 1}, \quad n \ge 0
+\end{align}
+and so, using the definition of $u(n)$,
+\begin{align}
+	a_{n+2} - 1 = \sbrak{x(n + 1) - 1}u(n)
+\end{align}
+
+\item Show that 
 \begin{align}
 	\sum_{k=1}^{\infty}\frac{a_k}{10^k}= 
 	\frac{1}{10}\sum_{k=0}^{\infty}\frac{x\brak{k}}{10^k} =\frac{1}{10}X^{+}\brak{{10}}
 \end{align}
- \item Show that 
+\label{pr:1-2}
+\solution 
+\begin{align}
+	\sum_{k=1}^{\infty}\frac{a_k}{10^k} &= \frac{1}{10}\sum_{k = 0}^{\infty}\frac{a_{k+1}}{10^k} \\
+	&= \frac{1}{10}\sum_{k = 0}^{\infty}\frac{x(k)}{10^k} \\
+	&= \frac{1}{10}X^+(z) \\
+	&= \frac{1}{10}\times\frac{100}{89} = \frac{10}{89}
+\end{align}
+\item Show that 
 \begin{align}
 	\alpha^n + \beta^n, \quad n \ge 1
+	\label{eq:yn-exp}
 \end{align}
 can be expressed as 
 \begin{align}
-	w(n) =\brak{\alpha^{n+1} + \beta^{n+1}}u(n)
+	w(n) = \brak{\alpha^{n+1} + \beta^{n+1}}u(n)
 \end{align}
-		and find $W(z)$.
+and find $W(z)$.
 
- \item Show that 
+\solution Putting $n = k + 1$ in \eqref{eq:yn-exp} and using the definition of $u(n)$, 
+\begin{align}
+	\alpha^n + \beta^n = \brak{\alpha^{k + 1} + \beta^{k + 1}}u(k)
+\end{align}
+Hence, \eqref{eq:yn-exp} can be expressed as
+\begin{align}
+	w(n) = \brak{\alpha^{n+1} + \beta^{n+1}}u(n) = y(n)
+\end{align}
+Therefore,
+\begin{align}
+	W(z) = Y(z) = \frac{1 + 2z^{-1}}{1 - z^{-1} - z^{-2}}
+\end{align}
+\item Show that 
 \begin{align}
 	\sum_{k=1}^{\infty}\frac{b_k}{10^k} =
 	\frac{1}{10}\sum_{k=0}^{\infty}\frac{y\brak{k}}{10^k} =\frac{1}{10}Y^{+}\brak{{10}}
 \end{align}
+\label{pr:1-4}
+\solution
+\begin{align}
+	\sum_{k=1}^{\infty}\frac{b_k}{10^k} &= \frac{1}{10}\sum_{k = 0}^{\infty}\frac{b_{k+1}}{10^k} \\
+	&= \frac{1}{10}\sum_{k = 0}^{\infty}\frac{y(k)}{10^k} \\
+	&= \frac{1}{10}Y^+(z) \\
+	&= \frac{1}{10}\times\frac{120}{89} = \frac{12}{89}
+\end{align}
 \item Solve the JEE 2019 problem.
 
+\solution We know that
+\begin{align}
+	\sum_{k = 1}^{n}a_k = x(n)*u(n - 1)
+\end{align}
+But
+\begin{align}
+	&x(n)*u(n - 1) \ztrans X(z)z^{-1}U(z) \\
+	&= \frac{z^{-1}}{\brak{1 - z^{-1} - z^{-2}}\brak{1 - z^{-1}}} \\
+	&= z\sbrak{\frac{1}{1 - z^{-1} - z^{-2}} - \frac{1}{1 - z^{-1}}} \\
+	&\ztrans z\sum_{n = 0}^{\infty}\brak{x(n) - 1}z^{-n} \\
+	&= \sum_{n = 0}^{\infty}\brak{x(n) - 1}z^{-n + 1} \\
+	&= \sum_{n = 0}^{\infty}\brak{x(n + 1) - 1}z^{-n} \\
+\end{align}
+From \eqref{eq:x-n-def}, we get
+\begin{align}
+	\sum_{k = 1}^{n}a_k = a_{n+2} - 1
+\end{align}
+We have already established the remaining options in order in the problems
+\eqref{pr:1-2}, \eqref{pr:1-3}, \eqref{pr:1-4}. Therefore, options 1, 2,
+and 3 are correct and option 4 is incorrect.
 \end{enumerate}
-
-
 \end{document}
