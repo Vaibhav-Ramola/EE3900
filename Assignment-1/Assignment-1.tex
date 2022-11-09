@@ -118,7 +118,7 @@
 	%\newtheorem{algorithm}{Algorithm}[section]
 	%\newtheorem{cor}{Corollary}
 	\newcommand{\BEQA}{\begin{eqnarray}}
-		\newcommand{\EEQA}{\end{eqnarray}}
+	\newcommand{\EEQA}{\end{eqnarray}}
 	\newcommand{\define}{\stackrel{\triangle}{=}}
 	\bibliographystyle{IEEEtran}
 	%\bibliographystyle{ieeetr}
@@ -169,7 +169,7 @@
 	\def\midbox#1{\raisebox{-0.5\baselineskip}[0in][0in]{#1}}
 	\vspace{3cm}
 	\title{Assignment - 1}
-	\author{Vaibhav Ramola} 
+	\author{Vaibhav Ramola \\ EP20BTECH11025} 
 	% make the title area
 	\maketitle
 	%\newpage
@@ -180,25 +180,35 @@
 	%\renewcommand{\theequation}{\thesection}
 	\bigskip
 	\begin{abstract}
-		This document contains the solution to Exercise 3.31 (a) of Oppenheim.
+		This document contains the solution to Exercise 2.32 of Oppenheim.
 	\end{abstract}
-
-\problem  Determine the z-transform and region of convergnce, and sketch the pole-zero diagram for the following sequence : 
-\begin{equation*}
-	x[n] = a^{n}u[n] + b^{n}u[n] + c^{n}u[-n-1], \quad |a| < |b| < |c|
-\end{equation*}
-\solution\\
-\begin{align*}
-&x[n] =  a^{n}u[n] + b^{n}u[n] + c^{n}u[-n-1] \quad |a|<|b|<|c|\\
-&X(z) =  \frac{1}{1-az^{-1}} + \frac{1}{1-bz^{-1}} - \frac{1}{1-cz^{-1}} \quad |b|<|z|<|c|\\
-&X(z) =  \frac{1 - 2cz^{-1} + (bc + ac - ab)z^{-2}}{(1 - az^{-1})(1 - bz^{-1})(1 - cz^{-1})}
- \quad |b|<|z|<|c|\\
-&\text{Poles : a,b,c}\\
-&\text{Zeros : $z_{1}$, $z_{2}$, $\infty$ where $z_{1}$ and $z_{2}$ are roots of numerator quadratic}\\
-\end{align*}
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[width=\columnwidth]{diagram.jpg}
-	\label{fig:ques}
-\end{figure} 
+	\problem Consider an LTI system with frequency response:\\
+	
+	$ H(e^{j\omega}) = e^{-j(\omega - \pi/4)}\left( \frac{1 + e^{-j2\omega} + 4e^{-j4\omega}}{1 + \frac{1}{2}e^{-j2\omega}} \right) $, \quad $-\pi < \omega < \pi$,\\
+	
+	Determine output $y[n]$ for all $n$ if the input for all $n$ is :
+	\begin{align*}
+	x[n] = \cos(\frac{\pi n}{2})
+	\end{align*}
+	\solution
+	\begin{align*}
+	H(e^{j\omega}) &= e^{j\pi/4} \cdot e^{-j\omega} \left( \frac{1 + e^{-j2\omega} + 4e^{-j4\omega}}{1 + \frac{1}{2}e^{-j2\omega}} \right) \\
+	&= e^{j\pi/4}G(e^{j\omega})
+	\end{align*}
+	Let $y_{1}[n] = x[n] * g[n]$, then
+	\begin{align*}
+	x[n] &= \cos \left( \frac{n\pi}{2} \right) = \frac{e^{j\pi n/2} + e^{-j\pi n/2}}{2}\\
+	y_{1}[n] &= \frac{G(e^{j\pi/2})e^{j\pi n/2} + G(e^{-j\pi/2}) e^{j\pi n/2} }{2}\\
+	\end{align*}
+	Evaluating the frequency response at $\omega = \pm \pi/2$ :
+	\begin{align*}
+	G(e^{j\pi/2}) &= e^{-j\pi/2} \frac{1 + e^{-j\pi} + 4e^{-j2\pi}}{1 + \frac{1}{2} e^{-j\pi}} = 8e^{-j\pi/2}\\
+	G(e^{-j\pi/2}) &= 8e^{j\pi/2}
+	\end{align*}
+	Therefore,
+	\begin{align*}
+	y_{1}[n] &= (8 e^{j(\pi n/2 - \pi/2)} + 8e^{j(-\pi n/2 + \pi/2)})/2 = 8\cos \left(\frac{\pi}{2}n - \frac{\pi}{2}\right)
+	\end{align*}
+	and\\
+	$ y[n] = e^{j \pi/4}y_{1}[n] = 8e^{j\pi/4}\cos(\frac{\pi}{2}n - \frac{\pi}{2}) $\\ 	
 \end{document}
